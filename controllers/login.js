@@ -6,7 +6,7 @@ var md5 = require('md5');
 
 router.get('/', function(req, res){
 	console.log('login page requested!');
-	res.render('login/index');
+	res.render('login/index');											
 });
 
 router.get('/', function(req, res){
@@ -15,7 +15,7 @@ router.get('/', function(req, res){
 });
 
 
-router.post('/',[check('username','null uname').not().isEmpty(),check('password','null pass').not().isEmpty()], function(req, res){
+router.post('/',[check('username','***Null Submission username field').not().isEmpty(),check('password','***Null Submission password field').not().isEmpty()], function(req, res){
 		
 		var errors = validationResult(req);
 	  if (!errors.isEmpty()) {
