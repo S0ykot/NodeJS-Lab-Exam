@@ -1,6 +1,7 @@
 var express 	= require('express');
 var router 		= express.Router();
 var userModel   = require.main.require('./models/user-model');
+const { check, validationResult } = require('express-validator');
 var md5 = require('md5');
 
 router.get('*', function(req, res, next){
