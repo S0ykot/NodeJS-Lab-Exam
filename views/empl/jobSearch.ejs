@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Job Search</title>
+	<script type="text/javascript">
+		
+		function find()
+		{
+			var key = document.getElementById('search').value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "http://localhost:3000/home/search/"+key, true);
+			xhttp.send();
+			  xhttp.onreadystatechange = function() {
+			    if (this.status==404) {
+			    	document.getElementById('job').innerHTML="";
+			    }
+			    else
+			    {
+			    	if (this.readyState == 4 && this.status == 200) {
+			     	document.getElementById('job').innerHTML = this.responseText;
+			    }
+			    }
+			  };
+		}
+
+
+	</script>
+</head>
+<body>
+<center>
+		Search: <input type="text" id="search" onkeyup="find()"><br><hr>
+	<div id="job">
+		<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Company</th>
+			<th>Title</th>
+			<th>Location</th>
+			<th>Salary</th>
+		</tr>
+		<% for(var i=0; i<data.length;i++) {%>
+		<tr>
+			<td><%=data[i].id%></td>
+			<td><%=data[i].companyName%></td>
+			<td><%=data[i].jobtTitle%></td>
+			<td><%=data[i].jobLocation%></td>
+			<td><%=data[i].salary%></td>
+		</tr>
+		<% }%>
+	</table>
+	</div>
+	<a href="/home">Back</a>
+</center>
+</body>
+</html>

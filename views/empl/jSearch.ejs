@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Company</th>
+			<th>Title</th>
+			<th>Location</th>
+			<th>Salary</th>
+		</tr>
+		<% for(var i=0; i<data.length;i++) {%>
+		<tr>
+			<td><%=data[i].id%></td>
+			<td><%=data[i].companyName%></td>
+			<td><%=data[i].jobtTitle%></td>
+			<td><%=data[i].jobLocation%></td>
+			<td><%=data[i].salary%></td>
+		</tr>
+		<% }%>
+	</table>
+
+
+</body>
+</html>

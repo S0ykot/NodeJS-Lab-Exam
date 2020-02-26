@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Search</title>
+	<script type="text/javascript">
+		
+		function find()
+		{
+			var key = document.getElementById('search').value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "http://localhost:3000/home/search/"+key, true);
+			xhttp.send();
+			  xhttp.onreadystatechange = function() {
+			    if (this.status==404) {
+			    	document.getElementById('test').innerHTML="";
+			    }
+			    else
+			    {
+			    	if (this.readyState == 4 && this.status == 200) {
+			     	document.getElementById('test').innerHTML = this.responseText;
+			    }
+			    }
+			  };
+		}
+
+
+	</script>
+</head>
+<body>
+<center>
+		Search: <input type="text" id="search" onkeyup="find()"><br><hr>
+	<div id="test">
+		<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Company</th>
+			<th>Contact</th>
+			<th>UserName</th>
+			<th>Type</th>
+		</tr>
+		<% for(var i=0; i<data.length;i++) {%>
+		<tr>
+			<td><%=data[i].id%></td>
+			<td><%=data[i].name%></td>
+			<td><%=data[i].companyName%></td>
+			<td><%=data[i].contact%></td>
+			<td><%=data[i].username%></td>
+			<td><%=data[i].type%></td>
+		</tr>
+		<% }%>
+	</table>
+	</div>
+	<a href="/home">Back</a>
+</center>
+</body>
+</html>
