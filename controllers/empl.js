@@ -125,11 +125,21 @@ router.post('/del/:id', function(req, res){
 });
 
 
-router.get('/Jsearch/:key', function(req, res){
+
+router.get('/jobSearch', function(req, res){
+	userModel.jobDetails(null,function(results){
+			res.render('empl/jobSearch', {data: results});
+	});
+});
+
+
+
+
+router.get('/jSearch/:key', function(req, res){
 	var keyword = req.params.key;
 	console.log("search");
-	userModel.userGetAll(keyword,function(results){
-			res.render('home/search', {data: results});
+	userModel.jobDetails(keyword,function(results){
+			res.render('empl/jSearch', {data: results});
 	});
 });
 

@@ -78,12 +78,12 @@ module.exports ={
 	},
 	jobDetails: function(data, callback){
 		var sql="";
-		if (data=="") {
+		if (data==null) {
 			sql = "SELECT * from job";
 		}
 		else
 		{
-			sql = "SELECT * from job where name like '%"+data+"%' or id like '%"+data+"%' or price like '%"+data+"%'";
+			sql = "SELECT * from job where companyName like '%"+data+"%' or id like '%"+data+"%' or salary like '%"+data+"%' or jobtTitle like '%"+data+"%' or jobLocation like '%"+data+"%'";
 		}
 		db.getResult(sql,function(result){
 			callback(result);
